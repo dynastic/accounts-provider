@@ -4,7 +4,7 @@ A library for Dynastic Accounts, including API methods and a Passport OAuth stra
 
 ## Installation
 
-* `yarn add dynastic/accounts-provider.git`
+* `yarn add dynastic-provider`
 * It's that simple!
 
 ## Example usage

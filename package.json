@@ -1,6 +1,6 @@
 {
   "name": "dynastic-provider",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Library for Dynastic Accounts, including API methods and a Passport OAuth strategy.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

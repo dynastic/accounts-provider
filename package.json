@@ -1,0 +1,22 @@
+{
+  "name": "dynastic-provider",
+  "version": "1.1.0",
+  "description": "Library for Dynastic Accounts, including API methods and a Passport OAuth strategy.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc"
+  },
+  "repository": "git@github.com:dynastic/accounts-provider.git",
+  "author": "Dynastic Development <hello@dynastic.co>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "passport-oauth2": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/passport-oauth2": "^1.4.5",
+    "typescript": "^2.5.3"
+  }
+}

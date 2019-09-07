@@ -10,6 +10,7 @@ type HTTPRequest = {
     body?: any;
     headers?: HTTPHeaders;
     disableWithCredentials?: boolean;
+    timeout?: number;
 };
 export declare type HTTPResponse = {
     status: number;

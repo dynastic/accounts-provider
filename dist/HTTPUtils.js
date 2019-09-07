@@ -13,7 +13,8 @@ function sendRequest(method, opts, resolve, reject) {
         headers: opts.headers,
         params: queryInURL ? undefined : opts.query,
         data: opts.body,
-        withCredentials: !opts.disableWithCredentials
+        withCredentials: !opts.disableWithCredentials,
+        timeout: opts.timeout
     };
     var parseResponse = (res) => {
         if (!res) {

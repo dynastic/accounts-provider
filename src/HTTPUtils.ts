@@ -10,6 +10,7 @@ type HTTPRequest = {
   body?: any,
   headers?: HTTPHeaders,
   disableWithCredentials?: boolean
+  timeout?: number;
 };
 
 export type HTTPResponse = {
@@ -21,8 +22,6 @@ export type HTTPResponse = {
 type HTTPError = {
   err: Error,
 };
-
-type HTTPResponseCallback = (res: ({ok: boolean} & HTTPResponse) | ({ok: boolean} & HTTPError)) => void;
 
 export interface Response {
     headers: {
@@ -42,7 +41,8 @@ function sendRequest(method: HTTPMethod, opts: HTTPRequest, resolve: (res: Respo
     headers: opts.headers,
     params: queryInURL ? undefined : opts.query,
     data: opts.body,
-    withCredentials: !opts.disableWithCredentials
+    withCredentials: !opts.disableWithCredentials,
+    timeout: opts.timeout
   };
 
   var parseResponse = (res: AxiosResponse<any>) => {

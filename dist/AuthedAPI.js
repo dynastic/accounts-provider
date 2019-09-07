@@ -15,11 +15,8 @@ class DynasticAccountsAuthedAPI {
         return Object.assign(this.extraHeaders, headers);
     }
     /* User API */
-    fullUser() {
-        return ResponseUtils_1.extractBody(HTTPUtils_1.default.get({ url: this.api.API_V0.USER.BASE, headers: this.getHeaders() }));
-    }
     basicUser() {
-        return ResponseUtils_1.extractBody(HTTPUtils_1.default.get({ url: this.api.API_V0.USER.BASE, query: "basic", headers: this.getHeaders() }));
+        return ResponseUtils_1.extractBody(HTTPUtils_1.default.get({ url: this.api.API_V0.USER.BASE, query: "basic", headers: this.getHeaders(), timeout: 3 }));
     }
 }
 exports.DynasticAccountsAuthedAPI = DynasticAccountsAuthedAPI;

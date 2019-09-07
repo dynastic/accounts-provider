@@ -18,11 +18,7 @@ export class DynasticAccountsAuthedAPI {
 
     /* User API */
 
-    fullUser(): Promise<Spec0.UserResponse> {
-        return extractBody(HTTPUtils.get({url: this.api.API_V0.USER.BASE, headers: this.getHeaders()}));
-    }
-
     basicUser(): Promise<Spec0.BasicUserResponse> {
-        return extractBody(HTTPUtils.get({url: this.api.API_V0.USER.BASE, query: "basic", headers: this.getHeaders()}));
+        return extractBody(HTTPUtils.get({url: this.api.API_V0.USER.BASE, query: "basic", headers: this.getHeaders(), timeout: 3}));
     }
 }

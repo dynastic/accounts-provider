@@ -7,6 +7,5 @@ export declare class DynasticAccountsAuthedAPI {
     api: DynasticAccountsAPI;
     constructor(token: string, api: DynasticAccountsAPI);
     getHeaders(headers?: HTTPHeaders): HTTPHeaders;
-    fullUser(): Promise<Spec0.UserResponse>;
     basicUser(): Promise<Spec0.BasicUserResponse>;
 }

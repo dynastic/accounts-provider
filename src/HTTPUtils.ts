@@ -42,7 +42,7 @@ function sendRequest(method: HTTPMethod, opts: HTTPRequest, resolve: (res: Respo
     params: queryInURL ? undefined : opts.query,
     data: opts.body,
     withCredentials: !opts.disableWithCredentials,
-    timeout: opts.timeout
+    timeout: typeof opts.timeout === "number" ? opts.timeout * 1000 : undefined
   };
 
   var parseResponse = (res: AxiosResponse<any>) => {

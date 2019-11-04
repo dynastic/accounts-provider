@@ -1,6 +1,6 @@
 {
   "name": "@dynastic-accounts/provider",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A Passport OAuth2 strategy for easily authenticating users with Dynastic Accounts.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -11,7 +11,7 @@
   "author": "Dynastic <hello@dynastic.co>",
   "license": "MIT",
   "dependencies": {
-    "@dynastic-accounts/core": "^2.0.0",
+    "@dynastic-accounts/core": "^2.0.2",
     "passport-oauth2": "^1.5.0"
   },
   "devDependencies": {

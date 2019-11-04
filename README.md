@@ -1,10 +1,10 @@
-# Dynastic Accounts Provider
+# `@dynastic-accounts/provider`
 
-A library for Dynastic Accounts, including API methods and a Passport OAuth strategy.
+A Passport OAuth2 strategy for easily authenticating users with Dynastic Accounts.
 
 ## Installation
 
-* `yarn add dynastic-provider`
+* `npm install --save @dynastic-accounts/provider`
 * It's that simple!
 
 ## Example usage

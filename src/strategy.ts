@@ -1,8 +1,7 @@
+import { DynasticAccountsAPI } from "@dynastic-accounts/core";
+import * as Constants from "@dynastic-accounts/core";
+
 import { Strategy as OAuth2Strategy, StrategyOptionsWithRequest, VerifyFunctionWithRequest } from "passport-oauth2";
-
-import { DynasticAccountsAPI } from "./API";
-
-import * as Constants from "./Constants";
 
 /**
  * The Dynastic Accounts strategy authenticates requests by

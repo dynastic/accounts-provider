@@ -7,9 +7,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const core_1 = require("@dynastic-accounts/core");
+const Constants = __importStar(require("@dynastic-accounts/core"));
 const passport_oauth2_1 = require("passport-oauth2");
-const API_1 = require("./API");
-const Constants = __importStar(require("./Constants"));
 /**
  * The Dynastic Accounts strategy authenticates requests by
  * using the Dynastic Accounts OAuth 2.0 API.
@@ -31,7 +31,7 @@ class Strategy extends passport_oauth2_1.Strategy {
         options.tokenURL = options.tokenURL || `${apiURL}/v0/oauth/token`;
         options.scopeSeparator = " ";
         super(options, verify);
-        this.api = new API_1.DynasticAccountsAPI(apiURL, options.clientID, options.clientSecret);
+        this.api = new core_1.DynasticAccountsAPI(apiURL, options.clientID, options.clientSecret);
         this.name = options.name || "dynastic";
     }
     /**

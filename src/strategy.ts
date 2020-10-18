@@ -22,13 +22,16 @@ export class Strategy extends OAuth2Strategy {
     constructor(options: StrategyOptions, verify: VerifyFunctionWithRequest) {
         // Setup endpoints
         const apiURL = options.apiBaseURL || Constants.API_BASE, frontendURL = options.frontendBaseURL || Constants.FRONTEND_BASE;
-        options.authorizationURL = options.authorizationURL || `${frontendURL}/authorize${options.firstParty === true ? "?forced_consent=true" : ""}`;
-        options.tokenURL = options.tokenURL || `${apiURL}/v0/oauth/token`;
 
-        (options as any).scopeSeparator = " ";
+        var realOptions: StrategyOptionsWithRequest = {
+            ...options,
+            scopeSeparator: "",
+            authorizationURL: `${frontendURL}/authorize${options.firstParty === true ? "?forced_consent=true" : ""}`,
+            tokenURL: `${apiURL}/v0/oauth/token`
+        }
         
-        super(options, verify);
-        this.api = new DynasticAccountsAPI(apiURL, options.clientID, options.clientSecret);
+        super(realOptions, verify);
+        this.api = new DynasticAccountsAPI(options.clientID, options.clientSecret, apiURL);
         this.name = (options as any).name || "dynastic";
     }
 
@@ -45,7 +48,13 @@ export class Strategy extends OAuth2Strategy {
     }
 }
 
-export interface StrategyOptions extends StrategyOptionsWithRequest {
+export interface StrategyOptions {
+    clientID: string;
+    clientSecret: string;
+    callbackURL?: string;
+    state?: any;
+    passReqToCallback: true;
+
     /**
      * Is the client a first party client?
      */
@@ -54,7 +63,7 @@ export interface StrategyOptions extends StrategyOptionsWithRequest {
     /**
      * Array of permission scopes to request.
      */
-    scope: string[];
+    scope?: string[];
     
     /**
      * The frontend URL of Dynastic Accounts.

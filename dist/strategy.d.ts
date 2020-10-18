@@ -1,4 +1,4 @@
-import { Strategy as OAuth2Strategy, StrategyOptionsWithRequest, VerifyFunctionWithRequest } from "passport-oauth2";
+import { Strategy as OAuth2Strategy, VerifyFunctionWithRequest } from "passport-oauth2";
 /**
  * The Dynastic Accounts strategy authenticates requests by
  * using the Dynastic Accounts OAuth 2.0 API.
@@ -22,7 +22,12 @@ export declare class Strategy extends OAuth2Strategy {
      */
     userProfile(accessToken: string, done: (err?: Error | null, profile?: any) => void): void;
 }
-export interface StrategyOptions extends StrategyOptionsWithRequest {
+export interface StrategyOptions {
+    clientID: string;
+    clientSecret: string;
+    callbackURL?: string;
+    state?: any;
+    passReqToCallback: true;
     /**
      * Is the client a first party client?
      */
@@ -30,7 +35,7 @@ export interface StrategyOptions extends StrategyOptionsWithRequest {
     /**
      * Array of permission scopes to request.
      */
-    scope: string[];
+    scope?: string[];
     /**
      * The frontend URL of Dynastic Accounts.
      */

@@ -27,11 +27,14 @@ class Strategy extends passport_oauth2_1.Strategy {
     constructor(options, verify) {
         // Setup endpoints
         const apiURL = options.apiBaseURL || Constants.API_BASE, frontendURL = options.frontendBaseURL || Constants.FRONTEND_BASE;
-        options.authorizationURL = options.authorizationURL || `${frontendURL}/authorize${options.firstParty === true ? "?forced_consent=true" : ""}`;
-        options.tokenURL = options.tokenURL || `${apiURL}/v0/oauth/token`;
-        options.scopeSeparator = " ";
-        super(options, verify);
-        this.api = new core_1.DynasticAccountsAPI(apiURL, options.clientID, options.clientSecret);
+        var realOptions = {
+            ...options,
+            scopeSeparator: "",
+            authorizationURL: `${frontendURL}/authorize${options.firstParty === true ? "?forced_consent=true" : ""}`,
+            tokenURL: `${apiURL}/v0/oauth/token`
+        };
+        super(realOptions, verify);
+        this.api = new core_1.DynasticAccountsAPI(options.clientID, options.clientSecret, apiURL);
         this.name = options.name || "dynastic";
     }
     /**
